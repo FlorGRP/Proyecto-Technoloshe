@@ -1,0 +1,102 @@
+﻿@model IEnumerable<CollectionJoy.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="~/Content/MyGalleryStyle.css">
+
+<h1>New Collection</h1>
+
+@using (Html.BeginForm("Index", "Products", FormMethod.Get))
+{
+
+<div class="form-group">
+    @Html.Label("Category")
+    @Html.DropDownList("Category", "All")
+    <input type="submit" class="btn btn-info" value="Show" />
+</div>
+       
+}
+    @*<fieldset>
+            @Html.Label("Show", "Category")
+            @Html.TextBox("id")
+            <input type="submit" class="btn btn-info" value="Show" />
+    </fieldset>*@
+
+<hr />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<hr />
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ImageMimeType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category1.Name)
+        </th>*@
+        @*<th></th>
+    </tr>*@
+
+    @*@foreach (var item in Model)
+    {*@
+        @*<tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ImageMimeType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category1.Name)
+            </td>*@
+            @*<td>*@
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |*@
+                @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+            @*</td>*@
+        @*</tr>
+    }*@
+
+@*</table>*@
+<div class="main">
+    <div class="card-colums">
+        <div class="card-rows">
+            @foreach (var item in Model)
+            {
+                <ul class="cards">
+                    <li class="cards_item">
+                        <div class="card">
+                            <div class="card_image"><img src="@Url.Action("getImage", "Products", new { id = item.ID })"> </div>
+                            <div class="card_content">
+                                <h2 class="card_title"> @Html.DisplayFor(modelItem => item.Name)</h2>
+                                <p class="card_text">  $   @Html.DisplayFor(modelItem => item.Price) </p>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                @*<button class="btn card_btn"></button>*@
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            }
+
+        </div>
+    </div>
+ </div>
+

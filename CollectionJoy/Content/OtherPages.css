@@ -1,0 +1,22 @@
+﻿/* Font */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.body {
+    color: #272727;
+    font-family: 'Quicksand', serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    padding: 1rem;
+}

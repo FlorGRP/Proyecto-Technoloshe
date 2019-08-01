@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CollectionJoy.Models.Stock>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="~/Content/OtherPages.css">
+
+<h1>Stock List</h1>
+<hr />
+
+@using (Html.BeginForm("Index", "Stocks", FormMethod.Get))
+{
+    <fieldset>
+        @Html.Label("Search", "Products")
+        @Html.TextBox("prod")
+        <input type="submit" class="btn btn-info" value="Search" />
+    </fieldset>
+}
+
+<hr />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<hr />
+
+<div class="table-responsive">
+    <table class="table table-stripped table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product1.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size1.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product1.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size1.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @*@Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
